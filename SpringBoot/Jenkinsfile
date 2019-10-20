@@ -4,7 +4,8 @@ node{
     }
     stage('Compile-package'){
         def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
-        bat "${mvnHome}/bin/mvn -f springboot1/SpringBoot/pom.xml clean"         
+        echo 'maven clean'
+        bat "${mvnHome}/bin/mvn -f SpringBoot/pom.xml clean"         
     }
     
 }
