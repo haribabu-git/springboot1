@@ -3,7 +3,7 @@ node{
         git 'https://github.com/haribabu-git/springboot1'    
     }
     stage('Compile-package'){
-         def mvnHome = tool name: 'M3', type: 'maven';
+         def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
          bat "${mvnHome}/bin/mvn package"
     }
     
