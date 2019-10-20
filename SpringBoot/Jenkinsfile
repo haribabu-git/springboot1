@@ -3,8 +3,10 @@ node{
         git 'https://github.com/haribabu-git/springboot1'    
     }
     stage('Compile-package'){
-         def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
-         bat "${mvnHome}/bin/mvn -f springboot1/SpringBoot/pom.xml clean"
+        dir(springboot1/SpringBoot){
+            def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
+            bat "${mvnHome}/bin/mvn clean"
+        }         
     }
     
 }
