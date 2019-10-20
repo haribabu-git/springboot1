@@ -1,6 +1,6 @@
 node{
     stage('SCM Checkout'){
-        git 'https://github.com/haribabu-git/springboot1/SpringBoot'    
+        git 'https://github.com/haribabu-git/springboot1'    
     }
     stage('Compile-package'){
          def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
