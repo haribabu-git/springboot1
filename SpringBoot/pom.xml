@@ -7,6 +7,7 @@
   <groupId>com.programcreek</groupId>
   <artifactId>SpringBoot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
   <name>SpringBoot</name>
   <parent>
