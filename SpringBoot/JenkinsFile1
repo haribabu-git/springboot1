@@ -7,9 +7,9 @@ pipeline {
       }
     }
     stage('compile') {
-      steps {
-        bat 'mvn -f SpringBoot/pom.xml clean package'
-      }
+      def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
+        echo 'maven clean'
+        bat "${mvnHome}/bin/mvn -f SpringBoot/pom.xml clean compile"
     }
     
     stage('deploy') {
