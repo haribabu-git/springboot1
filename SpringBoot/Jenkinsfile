@@ -16,8 +16,9 @@ node{
         echo 'maven clean'
         bat "${mvnHome}/bin/mvn -f SpringBoot/pom.xml clean package"
     }
-    stage('Deploy'){
-      deploy adapters: [tomcat7(credentialsId: 'eb6771ce-7e00-4a5f-bc14-ac811ea58a41', path: '', url: 'http://localhost:2020')], contextPath: 'springboot', war: '**/*.war'    
-       }
+     stage('Deployment'){
+       
+        bat 'del "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\SpringBoot-0.0.1-SNAPSHOT.war " && xcopy "C:\\Program Files (x86)\\Jenkins\\workspace\\springbootjenkinGitMavenPipe\\SpringBoot\\target\\SpringBoot-0.0.1-SNAPSHOT.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps"'
+      }
 
 }
