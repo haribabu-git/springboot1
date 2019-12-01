@@ -4,8 +4,10 @@ node{
     }
     stage('Compile-package'){
         def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
+        def javahome = tool name: 'JAVA_HOME';
         echo 'maven clean'
-        bat "${mvnHome}/bin/mvn -f SpringBoot/pom.xml clean install"         
+        bat "${mvnHome}/bin/mvn -f SpringBoot/pom.xml clean compile" 
+            bat "${javahome}/bin" sh 'java -version'
     }
     stage('Deploy'){
     deploy adapters: [tomcat7(credentialsId: 'eb6771ce-7e00-4a5f-bc14-ac811ea58a41', path: '', url: 'http://localhost:2020')], contextPath: 'springboot', war: '**/*.war'
