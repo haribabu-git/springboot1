@@ -1,0 +1,26 @@
+Hi Anna,
+
+
+pipeline {
+  agent any
+  stages {
+    stage('Clone') {
+      steps {
+        git(url: 'https://github.com/Rajendra333/app.git', branch: 'master')
+      }
+    }
+    stage('Build') {
+      steps {
+        bat 'mvn clean package'
+      }
+    }
+    
+    stage('deploy') {
+      steps {
+       
+        bat 'del "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\SpringBoot-0.0.1-SNAPSHOT.war " && xcopy "C:\\Program Files (x86)\\Jenkins\\workspace\\springbootjenkinGitMavenPipe\\SpringBoot\\target\\SpringBoot-0.0.1-SNAPSHOT.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps"'
+      }
+    }
+  }
+}
+
