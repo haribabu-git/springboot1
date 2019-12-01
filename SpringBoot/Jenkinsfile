@@ -9,5 +9,6 @@ node{
     steps {
      echo "PATH = ${PATH}"
     }
+    }
   
 }
