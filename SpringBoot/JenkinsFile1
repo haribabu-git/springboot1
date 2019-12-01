@@ -1,6 +1,3 @@
-Hi Anna,
-
-
 pipeline {
   agent any
   stages {
@@ -9,9 +6,9 @@ pipeline {
         git(url: 'https://github.com/haribabu-git/springboot1.git', branch: 'master')
       }
     }
-    stage('Build') {
+    stage('compile') {
       steps {
-        bat 'mvn -f SpringBoot/pom.xml clean compile'
+        bat 'mvn -f SpringBoot/pom.xml clean package'
       }
     }
     
