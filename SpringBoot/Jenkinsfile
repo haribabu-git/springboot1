@@ -3,9 +3,9 @@ node{
   env.JAVA_HOME = "${jdk}"
 
   echo "jdk installation path is: ${jdk}"
-  echo "jdk version is: ${jdk}/bin/java -version"
+  echo "jdk version is: ${jdk}\bin\java -version"
 
   // next 2 are equivalents
-  bat "${jdk}/bin/java -version"
+  bat "${jdk}\bin\java -version"
 
 }
