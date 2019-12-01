@@ -1,11 +1,24 @@
 node{
-  jdk = tool name: 'JAVA_HOME'
-  env.JAVA_HOME = "${jdk}"
+    jdk = tool name: 'JAVA_HOME'
+    env.JAVA_HOME = "${jdk}"
 
-  echo "jdk installation path is: ${jdk}"
-  echo "jdk version is: ${jdk}\\bin\\java -version"
+    echo "jdk installation path is: ${jdk}"
+  
+  
+     stage('SCM Checkout'){
+        git 'https://github.com/haribabu-git/springboot1'    
+     }
+  
+  
+  
+     stage('Compile-package'){
+        def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
+        echo 'maven clean'
+        bat "${mvnHome}/bin/mvn -f SpringBoot/pom.xml clean compile"
+    }
+    stage('Deploy'){
+      deploy adapters: [tomcat7(credentialsId: 'eb6771ce-7e00-4a5f-bc14-ac811ea58a41', path: '', url: 'http://localhost:2020')], contextPath: 'springboot', war: '**/*.war'
+    }
 
-  // next 2 are equivalents
-  bat "${jdk}\\bin\\java -version"
 
 }
